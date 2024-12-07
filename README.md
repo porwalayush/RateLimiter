@@ -1,6 +1,6 @@
 # Rate Limiting Algorithms
 
-Rate limiting algorithms are crucial for controlling the flow of requests in a system, ensuring fair usage, and preventing abuse. This document provides an overview of common rate-limiting algorithms, their features, and a comparison between the **Token Bucket** and **Fixed Window Counter** algorithms.
+Rate limiting algorithms are crucial for controlling the flow of requests in a system, ensuring fair usage, and preventing abuse. This document provides an overview of common rate-limiting algorithms, their features, and a detailed comparison of all algorithms.
 
 ---
 
