@@ -81,15 +81,16 @@ In a distributed environment, synchronization is critical. Algorithms like Redis
 
 ---
 
-## Comparison: Token Bucket vs. Fixed Window Counter
 
-| **Feature**              | **Token Bucket**                           | **Fixed Window Counter**                   |
-|---------------------------|--------------------------------------------|--------------------------------------------|
-| **Traffic Behavior**      | Allows bursts of requests up to bucket size. | May lead to spikes at window boundaries.   |
-| **Request Handling**      | Rejects only if no tokens are available.   | Rejects all requests beyond the limit in the window. |
-| **Implementation**        | Slightly more complex due to token refill logic. | Simple to implement with a single counter. |
-| **Granularity**           | Provides smoother rate-limiting.           | Coarse-grained; no control over spikes.    |
-| **Use Cases**             | Ideal for bursty traffic (e.g., streaming). | Best for simple, periodic rate limits.     |
+## Comparison Table: All Algorithms
+
+| **Algorithm**            | **Traffic Behavior**                          | **Request Handling**                       | **Implementation Complexity**  | **Memory Consumption**          | **Use Cases**                                   |
+|---------------------------|-----------------------------------------------|--------------------------------------------|---------------------------------|----------------------------------|------------------------------------------------|
+| **Fixed Window Counter**  | Can lead to spikes at window boundaries.      | Rejects all requests beyond the limit.     | Simple                         | Low                              | Basic APIs with periodic rate limits.          |
+| **Sliding Window Log**    | Fine-grained rate control.                    | Precise within a rolling window.           | High                           | High (stores timestamps).        | APIs requiring fine-grained control.           |
+| **Sliding Window Counter**| Reduces spikes, smoother than Fixed Window.   | Interpolates between counters.             | Moderate                       | Moderate                         | Smoother rate limits, better than logs.        |
+| **Token Bucket**          | Allows occasional bursts up to bucket size.   | Rejects only if no tokens are available.   | Moderate                       | Low                              | Systems needing controlled bursts (e.g., streaming). |
+| **Leaky Bucket**          | Maintains steady traffic flow, no bursts.     | Excess requests are discarded.             | Moderate                       | Low                              | Applications like payment gateways.            |
 
 ---
 
