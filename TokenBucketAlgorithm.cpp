@@ -31,7 +31,7 @@ private:
     double refill_rate; // Tokens per second
     double tokens;
     time_t last_refill_time;
-    double refill_interval; // Derived value for refill intervals- here we will be using =capacity/refill_interval
+    double refill_interval; // Derived value for refill intervals- here we will be using =capacity/refill_rate
 
 public:
     // Constructors
